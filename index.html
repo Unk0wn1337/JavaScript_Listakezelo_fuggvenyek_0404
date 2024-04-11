@@ -4,9 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simon Kende</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+    crossorigin="anonymous"></script>
     <script type="module" src="main.js"></script>
 </head>
 <body>
-    
+    <main class="container-fluid">
+        <header>
+            <h1>Listakezeles</h1>
+        </header>
+        <article>
+            <div class="urlap"></div>
+            <form>
+                <div class="mb-3 mt-3">
+                  <label for="nev" class="form-label">Név:</label>
+                  <input type="text" class="form-control" id="nev" placeholder="valaki vagyok" name="nev">
+                </div>
+                <div class="mb-3">
+                  <label for="kor" class="form-label">Kor:</label>
+                  <input type="number" class="form-control" id="kor" placeholder="kor" min="1" max="120" name="kor">
+                </div>
+                <div class="form-check mb-3">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="nem"> Férfi
+                </label>
+                </div>
+                <div class="form-check mb-3">
+                <label class="form-check-label">    
+                <input class="form-check-input" type="radio" name="nem"> Nő
+                </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+              <div class="szuro">
+                <div class="mb-3 mt-3">
+                    <label for="szNev" class="form-label">Név szűrés:</label>
+                    <input type="text" class="form-control" id="szNev" placeholder="valaki vagyok" name="szNev">
+                  </div>
+              </div>
+            <div class="adatok"></div>
+        </article>
+    </main>
 </body>
 </html>

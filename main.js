@@ -1,51 +1,54 @@
 import { emberekLISTA  } from "./adat.js";
 
+/* jelenítsük meg az adatainkat egy tábláztatban az adatok div-ben
+ az urlap divben pedig legyen egy űrlap amivel ilyen adatokat tudunk a táblázatba belerakni
 
-for (let index = 0; index < emberekLISTA.length; index++) {
-    const element = emberekLISTA[index];
-    console.log(element);
+1. ha a táblázat fejlécére kattintunk, akkor azon mező szerint tudjunk rendezni a táblázatot
+2. tudjunk törölni a táblázat adott sorát
+3. legyen egy szűrőmező, ahova beírva szavakat, tudunk szűrni, név szerint. 
+
+Milyen függvények kellenek?
+
+1. tablazatbaOsszealit(lista) -> txt - összeálítja a html kódot szöveges formában,
+   minden sor végén legyen egy kuka!
+2. megjelenites(txt)->nincs - megjeleniti egy html szöveget egy html elemben
+3. tablazatbaTesz(lista) - összszedi az az űrlap elemeket, és hozzáfűzi a listához, majd 
+   megjeleníti a újra a táblázatot. akkor hívódik meg, ha a Submit gombra kattintunk
+
+4. tablazatRendez(lista) - adott mezőszerint rendezi a táblázatot. - akkor hívódik meg, ha a tablazat
+    nev fejlecere kattintunk. Rendezzük a listát, megjelenitjuk újra a táblázatot.
+   kattintunk 
+   
+5. sorTorles(lista, id) - minden sor végén legyen egy kuka a sor indexével, erre a kukára kattintva töröljük az 
+   adott sort listából, és újra megjelenítjük a táblázatot a módosult listával. 
+
+6. szuresNevSzerint(lista, szurtSzoveg) - a szűrőben írt szó alapján kilistázza azokat az adatokat a listából, amelyekben szerepel a név mezejében az adott szó 
+   Ezután megjelenítjük a szürt listát az oldalon.
+   Akkor fog lefutni amikor megváltozik a szűrőmező tartalma.
+*/
+main();
+
+function main(){
+    feladat();
+
 }
 
-emberekLISTA.forEach((element,index) => {
-    
-});
 
-// Szűrjük férfiakra a listánkat
+function feladat(){
+    tablazatOsszealit(emberekLISTA);
+}
 
-const FERFIAK = emberekLISTA.filter(function(emberekLISTA){
-    return !emberekLISTA.Kor === true; //ez az érték mindig logikiai változó true/false
-});
-const FERFIAK2 = emberekLISTA.filter(function(emberekLISTA){
-    return !emberekLISTA.Kor === true; //ez az érték mindig logikiai változó true/false
-});
-console.log(FERFIAK);
-
-// azokat az embereket szeretném akik 20 évnél fiatalabbak
-const FIATALOK = emberekLISTA.filter(function(emberekLISTA){
-    return emberekLISTA.Kor < 20;
-});
-console.log(FIATALOK);
-
-// 10 évnél idősebb férfiak 
-const FERFIAK10FELETT = emberekLISTA.filter((ember) => {
-    return ember.Kor> 10 && !ember.nem
-});
-
-// rendezzük fordított sorrendbe kor szerint az embereinket
-
-emberekLISTA.sort(function(e1,e2){
-    return e2.Kor-e1.Kor
-
-});
-
-console.log(emberekLISTA);
-
-
-// véletelen sorrendű rendezés, kor szerinbt keverés
-
-emberekLISTA.sort(function(e1,e2){
-    // véletlen számot generálok -0.5 és + 0,5 között
-    return Math.random()*-0,5
-});
-console.log(emberekLISTA);
-
+function tablazatOsszealit(lista){
+    let segedValtozo = `<table>`
+    segedValtozo += `<tr>`
+    segedValtozo += `<th>nev</th>`
+    segedValtozo += `<th>kor</th>`
+    segedValtozo += `<th>nem</th>`
+    segedValtozo += `</tr>`
+    for (let index = 0; index < lista.length; index++) {
+        segedValtozo += `<tr>`
+        
+        segedValtozo += `</tr>`
+        
+    }
+}
