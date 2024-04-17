@@ -28,6 +28,11 @@ export const emberekLISTA = [
         nev:"Miklós",
         Kor:27,
         nem:false
+    }, 
+    {
+        nev:"Ádám",
+        Kor:22,
+        nem:false
     }
     
 

@@ -10,13 +10,43 @@ export function tablazatRendez(lista,irany){
     return lista;
 
 }
+
+
 /*Szorgalmi HF: lehessen rendezni kor szerint is!* *** tetszőleges mező szerint/ */
+let rendezesNovekvoCsokkeno = true;
+export function korSzerintRendez(lista) {
+    lista.sort(function(a, b) {
+        if (rendezesNovekvoCsokkeno == true) {
+            return a.Kor - b.Kor;
+        } else {
+            return b.Kor - a.Kor;
+        }
+    });
+    rendezesNovekvoCsokkeno = !rendezesNovekvoCsokkeno;
+
+    return lista;
+}
 
 
-
-function atalakit(szoveg){
+export function atalakitEkezet(szoveg){
     // szorgalmi házi feladat, hogy az Á betűt kicseréljük A-ra az É - E-re
     // replaceAll függvény btw
+   
+
+    // NEM JÓ MEGOLDÁS!
+    // szoveg.forEach(element => {
+    //     element.nev = element.nev
+    //     .replaceAll("á", "a")
+    //     .replaceAll("é", "e")
+    //     .replaceAll("ú", "u")
+    //     .replaceAll("ű", "u")
+    //     .replaceAll("ü", "u")
+    //     .replaceAll("ö", "o")
+    //     .replaceAll("ő", "o")
+    //     .replaceAll("ü", "u");
+    // });
+
+    // return szoveg;
 }
 
 export function szuresNevSzerint(lista, szurtSzoveg){
@@ -35,7 +65,7 @@ export function sorTorles(lista,index){
     
     /*sorTorles(lista, id) - minden sor végén legyen egy kuka a sor indexével, erre a kukára kattintva töröljük az 
    adott sort listából, és újra megjelenítjük a táblázatot a módosult listával. */
-    lista.splice(index,-1);
+    lista.splice(index, 1);
     return lista;
 
 }

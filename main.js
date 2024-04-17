@@ -1,6 +1,6 @@
 import { emberekLISTA  } from "./adat.js";
 import { tablazatOsszealit, megjelenites } from "./fuggvenyek.js";
-import { szuresNevSzerint, tablazatRendez, sorTorles } from "./adatKezelo.js";
+import { szuresNevSzerint, tablazatRendez, sorTorles, korSzerintRendez, atalakitEkezet } from "./adatKezelo.js";
 
 /* jelenítsük meg az adatainkat egy tábláztatban az adatok div-ben
  az urlap divben pedig legyen egy űrlap amivel ilyen adatokat tudunk a táblázatba belerakni
@@ -35,6 +35,7 @@ function init(lista){
     megjelenites(txt);
     console.log(nevIrany);
     nevRendezEsemeny(lista);
+    korRendezEsemeny(lista)
     sorTorlesEsemeny();
 }
 
@@ -46,10 +47,18 @@ function nevRendezEsemeny(lista){
     nevELEM.on("click",function(){
         const LISTA = tablazatRendez(lista,nevIrany);
         console.log(LISTA);
-        nevIrany*=(-1)
+        nevIrany*=(-1);
         init(LISTA);        
     });
 }
+function korRendezEsemeny(lista){
+    const KOR_ELEM = $(".adatok th").eq(1);
+    KOR_ELEM.on("click", function() {
+        const LISTA = korSzerintRendez(lista);
+        init(LISTA);
+    })
+}
+
 
 /*szűrőben írt szó alapján kilistázza azokat az adatokat a listából, amelyekben szerepel a név mezejében az adott szó 
    Ezután megjelenítjük a szürt listát az oldalon.

@@ -1,13 +1,12 @@
 export function tablazatOsszealit(lista){
     let txt = `<table class="table" "table-striped">`;
     txt += `<tr>`;
-    txt += `<th>nev</th>`;
-    txt += `<th>kor</th>`;
-    txt += `<th>nem</th>`;
-    txt += `<th></th>`
+    /*Szorgalmi, hogy a fejléc kulcsait is ciklussal írd ki*/
+    for (const key in lista[0]) {
+        txt += `<th>${key}</th>`
+    }
     txt += `</tr>`;
 
-    /*Szorgalmi, hogy a fejléc kulcsait is ciklussal írd ki*/
     lista.forEach((element,i) => {
         txt +=  `<tr>`
         for (const key in element) /*Objektumokon tudok végig iterálni*/{
