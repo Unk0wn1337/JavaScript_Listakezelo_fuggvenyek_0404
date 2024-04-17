@@ -1,4 +1,6 @@
 import { emberekLISTA  } from "./adat.js";
+import { tablazatOsszealit, megjelenites } from "./fuggvenyek.js";
+import { szuresNevSzerint, tablazatRendez, sorTorles } from "./adatKezelo.js";
 
 /* jelenítsük meg az adatainkat egy tábláztatban az adatok div-ben
  az urlap divben pedig legyen egy űrlap amivel ilyen adatokat tudunk a táblázatba belerakni
@@ -9,8 +11,7 @@ import { emberekLISTA  } from "./adat.js";
 
 Milyen függvények kellenek?
 
-1. tablazatbaOsszealit(lista) -> txt - összeálítja a html kódot szöveges formában,
-   minden sor végén legyen egy kuka!
+
 2. megjelenites(txt)->nincs - megjeleniti egy html szöveget egy html elemben
 3. tablazatbaTesz(lista) - összszedi az az űrlap elemeket, és hozzáfűzi a listához, majd 
    megjeleníti a újra a táblázatot. akkor hívódik meg, ha a Submit gombra kattintunk
@@ -26,29 +27,56 @@ Milyen függvények kellenek?
    Ezután megjelenítjük a szürt listát az oldalon.
    Akkor fog lefutni amikor megváltozik a szűrőmező tartalma.
 */
-main();
+let nevIrany = 1;
+init(emberekLISTA);
 
-function main(){
-    feladat();
+function init(lista){
+    let txt = tablazatOsszealit(lista);
+    megjelenites(txt);
+    console.log(nevIrany);
+    nevRendezEsemeny(lista);
+    sorTorlesEsemeny();
+}
 
+/*adott mezőszerint rendezi a táblázatot. - akkor hívódik meg, ha a tablazat
+nev fejlecere kattintunk. Rendezzük a listát, megjelenitjuk újra a táblázatot.
+kattintunk */
+function nevRendezEsemeny(lista){
+    const nevELEM = $(".adatok th").eq(0); /*első fejléc th elem */
+    nevELEM.on("click",function(){
+        const LISTA = tablazatRendez(lista,nevIrany);
+        console.log(LISTA);
+        nevIrany*=(-1)
+        init(LISTA);        
+    });
+}
+
+/*szűrőben írt szó alapján kilistázza azokat az adatokat a listából, amelyekben szerepel a név mezejében az adott szó 
+   Ezután megjelenítjük a szürt listát az oldalon.
+   Akkor fog lefutni amikor megváltozik a szűrőmező tartalma.*/
+function nevSzuresEsemeny(){
+    const SZURO_ELEM = $("#szNev");
+    SZURO_ELEM.on("keyup", function(){
+        let szuroSzoveg = SZURO_ELEM.val();
+        const LISTA = szuresNevSzerint(emberekLISTA,szuroSzoveg);
+        init(LISTA);
+    });
+}
+/*szorgalmi: szűrés más mezők alapján*/
+
+
+nevSzuresEsemeny();
+
+function sorTorlesEsemeny(){
+     /*sorTorles(lista, id) - minden sor végén legyen egy kuka a sor indexével, erre a kukára kattintva töröljük az 
+      adott sort listából, és újra megjelenítjük a táblázatot a módosult listával. */
+    const kukaELEM = $(".kuka");
+    kukaELEM.on("click", function(){
+        let index = event.target.id; /*Aktuális kuka indexe*/
+        const lista = sorTorles(emberekLISTA,index);
+        init(lista);
+    });
 }
 
 
-function feladat(){
-    tablazatOsszealit(emberekLISTA);
-}
 
-function tablazatOsszealit(lista){
-    let segedValtozo = `<table>`
-    segedValtozo += `<tr>`
-    segedValtozo += `<th>nev</th>`
-    segedValtozo += `<th>kor</th>`
-    segedValtozo += `<th>nem</th>`
-    segedValtozo += `</tr>`
-    for (let index = 0; index < lista.length; index++) {
-        segedValtozo += `<tr>`
-        
-        segedValtozo += `</tr>`
-        
-    }
-}
