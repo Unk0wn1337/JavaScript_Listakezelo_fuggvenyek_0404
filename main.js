@@ -1,6 +1,7 @@
 import { emberekLISTA  } from "./adat.js";
 import { tablazatOsszealit, megjelenites } from "./fuggvenyek.js";
 import { szuresNevSzerint, tablazatRendez, sorTorles, korSzerintRendez, atalakitEkezet } from "./adatKezelo.js";
+import { adatokListaba } from "./urlapKezelo.js";
 
 /* jelenítsük meg az adatainkat egy tábláztatban az adatok div-ben
  az urlap divben pedig legyen egy űrlap amivel ilyen adatokat tudunk a táblázatba belerakni
@@ -29,8 +30,8 @@ Milyen függvények kellenek?
 */
 let nevIrany = 1;
 init(emberekLISTA);
-
-function init(lista){
+adatokListaba(emberekLISTA);
+export function init(lista){
     let txt = tablazatOsszealit(lista);
     megjelenites(txt);
     console.log(nevIrany);

@@ -18,26 +18,32 @@
         </header>
         <article>
             <div class="urlap"></div>
-            <form>
+            <form class="was-validated">
                 <div class="mb-3 mt-3">
                   <label for="nev" class="form-label">Név:</label>
                   <input type="text" class="form-control" id="nev" placeholder="valaki vagyok" name="nev">
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                  <div class="valid-feedback">Valid.</div>
                 </div>
                 <div class="mb-3">
                   <label for="kor" class="form-label">Kor:</label>
-                  <input type="number" class="form-control" id="kor" placeholder="kor" min="1" max="120" name="kor">
+                  <input type="number" class="form-control" id="kor" placeholder="kor" min="1" max="120" name="kor" required min="0">
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                  <div class="valid-feedback">Valid.</div>
                 </div>
                 <div class="form-check mb-3">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="nem"> Férfi
+                    <input class="form-check-input" type="radio" name="nem"  value="false"> Férfi
                 </label>
                 </div>
                 <div class="form-check mb-3">
                 <label class="form-check-label">    
-                <input class="form-check-input" type="radio" name="nem"> Nő
-                </label>
+                <input class="form-check-input" type="radio" name="nem" value="true"> Nő
+                <div class="invalid-feedback">Please fill out this field.</div>
+                <div class="valid-feedback">Valid.</div>
+              </label>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
               </form>
               <div class="szuro">
                 <div class="mb-3 mt-3">
